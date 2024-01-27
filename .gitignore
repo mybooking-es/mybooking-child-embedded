@@ -1,0 +1,5 @@
+languages/*.po~
+languages/*.pot~
+
+.DS_Store
+**/.DS_Store

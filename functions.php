@@ -24,6 +24,9 @@ if ( !function_exists( 'mybooking_enqueue_scripts' ) ) {
     wp_enqueue_script( 'mybooking-child-scripts', trailingslashit( get_stylesheet_directory_uri() ) . 'js/custom-scripts.js', array( 'mybooking-scripts' ) );
     // Enqueue iframeSizer content window
     wp_enqueue_script( 'iframesizercontentwindow', trailingslashit( get_stylesheet_directory_uri() ) . 'js/iframeSizer.contentWindow.min.js' );
+    // Enqueue mybooking widget
+    wp_enqueue_script( 'mybooking-widget', trailingslashit( get_stylesheet_directory_uri() ) . 'js/mybooking-widget.js' );
+
   }
 }
 add_action( 'wp_enqueue_scripts', 'mybooking_enqueue_scripts', 10 );

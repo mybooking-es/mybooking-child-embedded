@@ -143,3 +143,29 @@ if ( ! function_exists( 'mybooking_disable_custom_colors' ) ) {
   }
 }
 add_action( 'after_setup_theme', 'mybooking_disable_custom_colors' );
+
+
+if ( ! function_exists( 'mybooking_custom_polylang_langswitcher' ) ) {
+  /**
+  * Polylang Shortcode - https://wordpress.org/plugins/polylang/
+  * Add this code in your functions.php
+  * Put shortcode [polylang_langswitcher] to post/page for display flags
+  *
+  * @return string
+  */
+  function mybooking_custom_polylang_langswitcher() {
+    $output = '';
+    if ( function_exists( 'pll_the_languages' ) ) {
+      $args   = [
+        'show_flags' => 1,
+        'show_names' => 0,
+        'echo'       => 0,
+        'hide_current' => 1
+      ];
+      $output = '<ul class="polylang_langswitcher">'.pll_the_languages( $args ). '</ul>';
+    }
+
+    return $output;
+  }
+}
+add_shortcode( 'mybooking_polylang_langswitcher', 'mybooking_custom_polylang_langswitcher' );

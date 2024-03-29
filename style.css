@@ -6,7 +6,7 @@ Author: 					      [author_name]
 Author URI: 				    [author_url]
 Description: 				    Tema basado en Mybooking Theme para [client_name]
 Tags: 						      e-commerce,blog
-Version:            		1.0.2
+Version:            		1.0.3
 Requires at least:  		5.2
 Tested up to:       		5.6.1
 Requires PHP:       		7.2
@@ -20,12 +20,17 @@ Domain Path:        		/languages
   display: none
 }
 
-ul.polylang_langswitcher {
+br.mbe_polylang_separator {
+ clear: both;
+ height: 0;
+}
+
+ul.mbe_polylang_langswitcher {
   float: right;
   margin-right: 1rem;
 }
 
-ul.polylang_langswitcher li.lang-item{
+ul.mbe_polylang_langswitcher li.lang-item{
   display:inline;
   padding-left: 0;
   list-style:none;

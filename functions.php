@@ -159,10 +159,9 @@ if ( ! function_exists( 'mybooking_custom_polylang_langswitcher' ) ) {
       $args   = [
         'show_flags' => 1,
         'show_names' => 0,
-        'echo'       => 0,
-        'hide_current' => 1
+        'echo'       => 0
       ];
-      $output = '<ul class="polylang_langswitcher">'.pll_the_languages( $args ). '</ul>';
+      $output = '<div class="mbe_polylang_langswitcher_container"><ul class="mbe_polylang_langswitcher">'.pll_the_languages( $args ). '</ul></div><br class="mbe_polylang_separator">';
     }
 
     return $output;

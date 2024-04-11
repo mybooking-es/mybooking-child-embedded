@@ -28,16 +28,41 @@ mybookingClient.rentEngineDelegate = {
   },
 
   showModal: function(event, modal) {
-    console.log('showModal', event, modal);
     if ('parentIFrame' in window) {
-      console.log('Has parentIFrame');
       parentIFrame.getPageInfo(function(pageInfo) {
-        console.log('pageInfo', pageInfo);
-        var scrollTop = pageInfo.scrollTop;
-        var topModalPosition = scrollTop; // - modalHeight + margin;
-        if (scrollTop == 0) {
-          topModalPosition += 30;
+        
+        // Calculate the top margin between the modal and the top of the iframe
+
+        // 1. Calculate
+        var windowHeight = pageInfo.windowHeight; // Height of the window (viewport)
+        var offsetTop = pageInfo.offsetTop; // Offset top of the iframe
+        if (pageInfo.scrollTop == 0) { // Because only the iframe content is shown in the viewport
+          offsetTop = 0;
         }
+        var modalHeight = modal.$elm.height(); // Modal height
+        // ======================== viewport start
+        // offset
+        // ------------------------ iframe start
+        // ???? We are calculating this position
+        // ************************ modal start
+        //
+        // 
+        // ***********************  modal end
+        // 
+        // ======================== viewport end
+        //
+        //
+        // ------------------------ iframe end
+        var topAdjust = (windowHeight - offsetTop - modalHeight) / 2;
+        if (topAdjust > 40) {
+         topAdjust -= 40; // magic number for modal margin
+        }
+
+        // 2. Get the scroll position
+        var scrollTop = pageInfo.scrollTop;
+        var topModalPosition = scrollTop;
+        topModalPosition += topAdjust; // Adjust the top position with top of the modal
+
         modal.$elm.css('vertical-align', 'top');
         modal.$elm.css('top', topModalPosition);
         // Disable to avoid events on scroll
@@ -45,7 +70,7 @@ mybookingClient.rentEngineDelegate = {
       });
     }
     else {
-      console.log('No has parentIFrame');
+      //console.log('No has parentIFrame');
     }
   }
 

@@ -168,3 +168,21 @@ if ( ! function_exists( 'mybooking_custom_polylang_langswitcher' ) ) {
   }
 }
 add_shortcode( 'mybooking_polylang_langswitcher', 'mybooking_custom_polylang_langswitcher' );
+
+
+if ( function_exists( 'pll_current_language' ) ) {
+  if ( ! function_exists( 'mybooking_customer_polylangh_url_query_string' ) ) {
+    /**
+     * Filter the translation url of the current page before Polylang caches it.
+     *
+     * @param null|string $url The translation url, null if none was found.
+     */
+    function mybooking_customer_polylangh_url_query_string( $url ) {
+      if ( ! empty( $_SERVER['QUERY_STRING'] ) ) {
+          return $url . '?' . $_SERVER['QUERY_STRING'];
+      }
+      return $url;
+    }
+  }
+  add_filter( 'pll_the_language_link', 'mybooking_customer_polylangh_url_query_string' );
+}

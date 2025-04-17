@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.5] - 2025.04.17
+
+### Fixed
+
+- Polylang translation add query string to the URL
+
 ## [1.0.4] - 2024.04.11
 
 ### Fixed
